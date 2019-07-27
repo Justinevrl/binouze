@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Container, Row, Col } from 'reactstrap';
 import ListBeerpump from './components/ListBeerpump';
 import AddBeerpump from './components/AddBeerpump';
 
@@ -10,19 +11,28 @@ class App extends Component {
       beers: [
         {
           outflow: 0,
-          type: 'blanche',
+          type: 'Blanche',
         },
         {
           outflow: 0,
-          type: 'blonde',
+          type: 'Blonde',
         },
         {
           outflow: 0,
-          type: 'ambrée',
+          type: 'Ambrée',
         },
       ],
     };
   }
+
+  // Exemple avec une requête GET :
+  // componentDidMount = () => {
+  //   axios.get('http://www.binouzecorp.com/api/beerpumps')
+  //     .then((res) => {
+  //       const beers = res.data;
+  //       this.setState({ beers });
+  //     });
+  // }
 
   addOutflow = (type) => {
     const { beers } = this.state;
@@ -73,16 +83,31 @@ class App extends Component {
     const { beers } = this.state;
     return (
       <div>
-        <AddBeerpump addBeerpump={this.addBeerpump} />
-        {beers.map(beer => (
-          <ListBeerpump
-            addOutflow={this.addOutflow}
-            changeOutflow={this.changeOutflow}
-            removeOutflow={this.removeOutflow}
-            type={beer.type}
-            outflow={beer.outflow}
-          />
-        ))}
+        <Container className="container">
+          <Row>
+            <Col>
+              <h1 className="title">Binouze Corporation</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <AddBeerpump addBeerpump={this.addBeerpump} />
+            </Col>
+          </Row>
+          <Row>
+            {beers.map(beer => (
+              <Col xs="12" sm="4">
+                <ListBeerpump
+                  addOutflow={this.addOutflow}
+                  changeOutflow={this.changeOutflow}
+                  removeOutflow={this.removeOutflow}
+                  type={beer.type}
+                  outflow={beer.outflow}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
     );
   }

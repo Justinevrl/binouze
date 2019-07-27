@@ -25,17 +25,26 @@ class AddBeerpump extends Component {
     this.setState({
       newType: '',
     });
+
+    // Exemple avec une requête POST :
+    // Si l'API renvoie l'objet inséré, je mettrai le POST dans la méthode addBeerpump de App.js
+    // axios.post(`https://binouzecorp.com/api/beerpumps`, { outflow, type })
+    // .then(res => {
+    //   console.log(res);
+    //   console.log(res.data);
+    // })
+    // }
   }
 
   render() {
     const { newType } = this.state;
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
+        <Form className="addbeerpump" onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Input type="text" placeholder="add a beer" value={newType} onChange={this.handleChange} />
+            <Input type="text" placeholder="add a beer pump" value={newType} onChange={this.handleChange} />
           </FormGroup>
-          <Button color="primary" type="submit">
+          <Button className="addbutton" color="primary" type="submit">
             add
           </Button>
         </Form>

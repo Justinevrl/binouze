@@ -8,15 +8,17 @@ const ListBeerpump = ({
   type, outflow, addOutflow, changeOutflow, removeOutflow,
 }) => (
   <div>
-    <img src={beerpump} alt="beerpump" />
-    <p>{type}</p>
-    <Button color="primary" onClick={() => removeOutflow(type)}>-</Button>
-    <Form>
-      <FormGroup>
-        <Input type="text" value={outflow} onChange={event => changeOutflow(type, event.target.value)} />
-      </FormGroup>
-    </Form>
-    <Button color="primary" onClick={() => addOutflow(type)}>+</Button>
+    <img className="imagebeerpump" src={beerpump} alt="beerpump" />
+    <p className="type">{type}</p>
+    <div className="beerpump">
+      <Button color="primary" onClick={() => removeOutflow(type)}>-</Button>
+      <Form className="pump">
+        <FormGroup>
+          <Input type="text" value={outflow} onChange={event => changeOutflow(type, event.target.value)} />
+        </FormGroup>
+      </Form>
+      <Button color="primary" onClick={() => addOutflow(type)}>+</Button>
+    </div>
   </div>
 );
 
